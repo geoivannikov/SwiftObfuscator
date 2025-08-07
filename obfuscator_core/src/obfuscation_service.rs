@@ -1,5 +1,5 @@
 use crate::file_utils;
-use crate::obfuscator;
+use crate::obfuscator::ObfuscationMap;
 use std::env;
 
 pub fn run() {
@@ -20,13 +20,17 @@ pub fn run() {
         // Read all input files once
         let contents = file_utils::read_files(&input_files);
 
-        // Build mapping using file contents, not file paths
-        let mapping = obfuscator::collect_class_names(&contents);
+        // Build mapping using file contents
+        let obf_map = ObfuscationMap::from_contents(&contents)
+            .unwrap_or_else(|e| {
+                eprintln!("Failed to build class name regex: {}", e);
+                std::process::exit(1);
+            });
 
         // Obfuscate each file content
         let obfuscated: Vec<String> = contents
             .iter()
-            .map(|c| obfuscator::obfuscate_class_names_with_map(c, &mapping))
+            .map(|c| obf_map.obfuscate_source(c))
             .collect();
 
         file_utils::write_files(&output_files, &obfuscated);
