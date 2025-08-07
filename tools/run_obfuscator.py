@@ -7,12 +7,13 @@ from glob import glob
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OBFUSCATOR_PATH = os.path.join(PROJECT_ROOT, "obfuscator_core")
 INPUT_DIR = os.path.join(PROJECT_ROOT, "SwiftSamples", "classes")
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "SwiftSamplesResult", "classes")
+OUTPUT_DIR = os.path.join(PROJECT_ROOT, "SwiftSamplesResultTmp", "classes")
+REFERENCE_DIR = os.path.join(PROJECT_ROOT, "SwiftSamplesResult", "classes")
 
 def clean_output_dir():
     if os.path.exists(OUTPUT_DIR):
         shutil.rmtree(OUTPUT_DIR)
-    # Remove everything in SwiftSamplesResult
+    # Remove everything in SwiftSamplesResultTmp
     parent = os.path.dirname(OUTPUT_DIR)
     if os.path.exists(parent):
         for entry in os.listdir(parent):
@@ -55,7 +56,38 @@ def run_obfuscator():
         sys.exit(1)
     print(f"Obfuscated files written to {OUTPUT_DIR}")
 
+def compare_results():
+    print("Comparing SwiftSamplesResultTmp/classes with SwiftSamplesResult/classes ...")
+    tmp_files = sorted([f for f in os.listdir(OUTPUT_DIR) if f.endswith(".swift")])
+    ref_files = sorted([f for f in os.listdir(REFERENCE_DIR) if f.endswith(".swift")])
+
+    all_ok = True
+    for fname in tmp_files:
+        tmp_path = os.path.join(OUTPUT_DIR, fname)
+        ref_path = os.path.join(REFERENCE_DIR, fname)
+        if not os.path.exists(ref_path):
+            print(f"❌ [FAIL] Reference file missing: {ref_path}")
+            all_ok = False
+            continue
+        with open(tmp_path, "r", encoding="utf-8") as f1, open(ref_path, "r", encoding="utf-8") as f2:
+            if f1.read() == f2.read():
+                print(f"✅ [OK]   {fname}")
+            else:
+                print(f"❌ [FAIL] {fname} differs")
+                all_ok = False
+
+    for fname in ref_files:
+        if fname not in tmp_files:
+            print(f"❌ [FAIL] Output file missing: {fname}")
+            all_ok = False
+
+    if all_ok:
+        print("🎉 All files match.")
+    else:
+        print("⚠️ Some files do not match.")
+
 if __name__ == "__main__":
     clean_output_dir()
     build_obfuscator()
     run_obfuscator()
+    compare_results()
