@@ -1,3 +1,7 @@
+mod file_utils;
+mod obfuscation_service;
+mod obfuscator;
+
 fn main() {
-    println!("Hello, world!");
+    obfuscation_service::run();
 }
