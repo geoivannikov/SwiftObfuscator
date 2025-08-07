@@ -13,9 +13,39 @@ target
 # Contains mutation testing data
 **/mutants.out*/
 
-# RustRover
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
+# Xcode
+.DS_Store
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcuserdatad
+*.xcassets/*.imageset/*.png
+*.xcassets/*.appiconset/*.png
+
+# SwiftPM
+.build/
+
+# JetBrains IDEs
+.idea/
+
+# macOS
+.DS_Store
+
+# User-specific files
+*.swp
+*.swo
+*.tmp
+*.bak
+*.old
+*.orig
+*.log
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
