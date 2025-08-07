@@ -17,13 +17,18 @@ pub fn run() {
             std::process::exit(1);
         }
 
-        let mapping = obfuscator::collect_class_names(&input_files);
-
+        // Read all input files once
         let contents = file_utils::read_files(&input_files);
+
+        // Build mapping using file contents, not file paths
+        let mapping = obfuscator::collect_class_names(&contents);
+
+        // Obfuscate each file content
         let obfuscated: Vec<String> = contents
             .iter()
             .map(|c| obfuscator::obfuscate_class_names_with_map(c, &mapping))
             .collect();
+
         file_utils::write_files(&output_files, &obfuscated);
 
         for (input, output) in input_files.iter().zip(output_files.iter()) {

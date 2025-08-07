@@ -1,24 +1,20 @@
 use regex::Regex;
 use std::collections::HashMap;
-use std::fs;
-use std::path::Path;
 
-/// Collects all class names from a list of file paths.
-pub fn collect_class_names<P: AsRef<Path>>(files: &[P]) -> HashMap<String, String> {
+/// Collects all class names from a list of file contents.
+pub fn collect_class_names(contents: &[String]) -> HashMap<String, String> {
     let class_re = Regex::new(r"class\s+([A-Za-z_][A-Za-z0-9_]*)").unwrap();
     let mut counter = 1;
     let mut mapping = HashMap::new();
 
-    for file in files {
-        if let Ok(content) = fs::read_to_string(file.as_ref()) {
-            for caps in class_re.captures_iter(&content) {
-                let orig = &caps[1];
-                mapping.entry(orig.to_string()).or_insert_with(|| {
-                    let name = format!("ObfClass{}", counter);
-                    counter += 1;
-                    name
-                });
-            }
+    for content in contents {
+        for caps in class_re.captures_iter(content) {
+            let orig = &caps[1];
+            mapping.entry(orig.to_string()).or_insert_with(|| {
+                let name = format!("ObfClass{}", counter);
+                counter += 1;
+                name
+            });
         }
     }
     mapping
