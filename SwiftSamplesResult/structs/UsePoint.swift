@@ -1,8 +1,8 @@
-protocol Drawable {
+protocol ObfProtocol1 {
     func draw()
 }
 
-extension ObfStruct1: Drawable {
+extension ObfStruct1: ObfProtocol1 {
     func draw() {
         print("Drawing point at (\(x), \(y))")
     }
@@ -62,5 +62,5 @@ func testPoint() {
     point1.draw()
     
     // Protocol conformance
-    let drawable: Drawable = point2
+    let drawable: ObfProtocol1 = point2
 }
