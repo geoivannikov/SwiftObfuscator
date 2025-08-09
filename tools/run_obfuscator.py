@@ -52,7 +52,9 @@ def run_obfuscator_for_test_case(test_name, input_dir, output_dir):
 def compare_results():
     test_cases = [
         ("classes", "SwiftSamples/classes", "SwiftSamplesResultTmp/classes", "SwiftSamplesResult/classes"),
-        ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple", "SwiftSamplesResult/classes-multiple")
+        ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple", "SwiftSamplesResult/classes-multiple"),
+        ("structs", "SwiftSamples/structs", "SwiftSamplesResultTmp/structs", "SwiftSamplesResult/structs"),
+        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple", "SwiftSamplesResult/structs-multiple")
     ]
     
     overall_success = True
@@ -109,10 +111,12 @@ def compare_results():
     else:
         print("⚠️ SOME TESTS FAILED!")
 
-def run_all_tests():
+def run_all_obfuscations():
     test_cases = [
         ("classes", "SwiftSamples/classes", "SwiftSamplesResultTmp/classes"),
-        ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple")
+        ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple"),
+        ("structs", "SwiftSamples/structs", "SwiftSamplesResultTmp/structs"),
+        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple")
     ]
     
     for test_name, input_rel_dir, output_rel_dir in test_cases:
@@ -126,5 +130,5 @@ def run_all_tests():
 if __name__ == "__main__":
     clean_output_dir()
     build_obfuscator()
-    run_all_tests()
+    run_all_obfuscations()
     compare_results()
