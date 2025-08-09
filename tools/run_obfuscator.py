@@ -54,7 +54,9 @@ def compare_results():
         ("classes", "SwiftSamples/classes", "SwiftSamplesResultTmp/classes", "SwiftSamplesResult/classes"),
         ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple", "SwiftSamplesResult/classes-multiple"),
         ("structs", "SwiftSamples/structs", "SwiftSamplesResultTmp/structs", "SwiftSamplesResult/structs"),
-        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple", "SwiftSamplesResult/structs-multiple")
+        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple", "SwiftSamplesResult/structs-multiple"),
+        ("enums", "SwiftSamples/enums", "SwiftSamplesResultTmp/enums", "SwiftSamplesResult/enums"),
+        ("enums-multiple", "SwiftSamples/enums-multiple", "SwiftSamplesResultTmp/enums-multiple", "SwiftSamplesResult/enums-multiple")
     ]
     
     overall_success = True
@@ -116,7 +118,9 @@ def run_all_obfuscations():
         ("classes", "SwiftSamples/classes", "SwiftSamplesResultTmp/classes"),
         ("classes-multiple", "SwiftSamples/classes-multiple", "SwiftSamplesResultTmp/classes-multiple"),
         ("structs", "SwiftSamples/structs", "SwiftSamplesResultTmp/structs"),
-        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple")
+        ("structs-multiple", "SwiftSamples/structs-multiple", "SwiftSamplesResultTmp/structs-multiple"),
+        ("enums", "SwiftSamples/enums", "SwiftSamplesResultTmp/enums"),
+        ("enums-multiple", "SwiftSamples/enums-multiple", "SwiftSamplesResultTmp/enums-multiple")
     ]
     
     for test_name, input_rel_dir, output_rel_dir in test_cases:
