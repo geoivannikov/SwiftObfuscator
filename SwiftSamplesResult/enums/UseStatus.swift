@@ -30,8 +30,8 @@ func testStatus() {
     var optStatus: ObfEnum1? = ObfEnum1.pending
     optStatus = nil
     
-    // In typealias
-    typealias TaskStatus = ObfEnum1
+    // In ObfAlias1
+    ObfAlias1 TaskStatus = ObfEnum1
     let taskStatus = TaskStatus.running
     
     // Static property

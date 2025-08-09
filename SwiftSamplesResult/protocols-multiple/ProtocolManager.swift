@@ -31,11 +31,11 @@ func runProtocolManager() {
     processCacheable(user)
     
     // Typealias with protocols
-    typealias IDType = ObfProtocol2
-    typealias CacheType = ObfProtocol1
+    typealias ObfAlias1 = ObfProtocol2
+    typealias ObfAlias2 = ObfProtocol1
     
-    let idType: IDType = user
-    let cacheType: CacheType = user
+    let idType: ObfAlias1 = user
+    let cacheType: ObfAlias2 = user
     
     // Extension usage
     user.defaultCache()

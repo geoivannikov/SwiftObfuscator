@@ -48,8 +48,8 @@ func testPoint() {
     var optPoint: ObfStruct1? = ObfStruct1(x: 1.0, y: 1.0)
     optPoint?.move(by: ObfStruct1(x: 5.0, y: 5.0))
 
-    // In typealias
-    typealias Coordinate = ObfStruct1
+    // In ObfAlias1
+    ObfAlias1 Coordinate = ObfStruct1
     let coord = Coordinate(x: 100.0, y: 200.0)
     coord.distance(to: origin)
 

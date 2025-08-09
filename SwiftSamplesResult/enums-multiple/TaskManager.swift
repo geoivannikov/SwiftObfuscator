@@ -68,9 +68,9 @@ func runTaskManager() {
     let defaultPriority = ObfEnum1.defaultPriority
     
     // Typealias ObfStruct2 enums
-    typealias UrgencyLevel = ObfEnum1
-    typealias Status = ObfEnum2
+    typealias ObfAlias1 = ObfEnum1
+    typealias ObfAlias2 = ObfEnum2
     
-    let urgency: UrgencyLevel = UrgencyLevel.critical
-    let status: Status = Status.done
+    let urgency: ObfAlias1 = ObfAlias1.critical
+    let status: ObfAlias2 = ObfAlias2.done
 }

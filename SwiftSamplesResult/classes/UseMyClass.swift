@@ -32,8 +32,8 @@ func test() {
     var opt: ObfClass1? = ObfClass1()
     opt?.sayHello()
 
-    // In typealias
-    typealias Alias = ObfClass1
+    // In ObfAlias1
+    ObfAlias1 Alias = ObfClass1
     let aliasObj = Alias()
     aliasObj.sayHello()
 

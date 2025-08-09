@@ -58,7 +58,8 @@ def compare_results():
         ("enums", "SwiftSamples/enums", "SwiftSamplesResultTmp/enums", "SwiftSamplesResult/enums"),
         ("enums-multiple", "SwiftSamples/enums-multiple", "SwiftSamplesResultTmp/enums-multiple", "SwiftSamplesResult/enums-multiple"),
         ("protocols", "SwiftSamples/protocols", "SwiftSamplesResultTmp/protocols", "SwiftSamplesResult/protocols"),
-        ("protocols-multiple", "SwiftSamples/protocols-multiple", "SwiftSamplesResultTmp/protocols-multiple", "SwiftSamplesResult/protocols-multiple")
+        ("protocols-multiple", "SwiftSamples/protocols-multiple", "SwiftSamplesResultTmp/protocols-multiple", "SwiftSamplesResult/protocols-multiple"),
+        ("typealiases", "SwiftSamples/typealiases", "SwiftSamplesResultTmp/typealiases", "SwiftSamplesResult/typealiases")
     ]
     
     overall_success = True
@@ -124,7 +125,8 @@ def run_all_obfuscations():
         ("enums", "SwiftSamples/enums", "SwiftSamplesResultTmp/enums"),
         ("enums-multiple", "SwiftSamples/enums-multiple", "SwiftSamplesResultTmp/enums-multiple"),
         ("protocols", "SwiftSamples/protocols", "SwiftSamplesResultTmp/protocols"),
-        ("protocols-multiple", "SwiftSamples/protocols-multiple", "SwiftSamplesResultTmp/protocols-multiple")
+        ("protocols-multiple", "SwiftSamples/protocols-multiple", "SwiftSamplesResultTmp/protocols-multiple"),
+        ("typealiases", "SwiftSamples/typealiases", "SwiftSamplesResultTmp/typealiases")
     ]
     
     for test_name, input_rel_dir, output_rel_dir in test_cases:

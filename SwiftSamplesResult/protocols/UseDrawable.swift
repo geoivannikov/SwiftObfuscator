@@ -34,8 +34,8 @@ func testDrawable() {
     var optDrawable: ObfProtocol1? = ObfStruct1(color: "yellow")
     optDrawable?.draw()
     
-    // In typealias
-    typealias Shape = ObfProtocol1
+    // In ObfAlias1
+    ObfAlias1 Shape = ObfProtocol1
     let shape: Shape = ObfStruct1(color: "purple")
     
     // Protocol conformance
